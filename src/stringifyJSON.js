@@ -4,5 +4,10 @@
 // but you don't so you're going to write it from scratch:
 
 var stringifyJSON = function(obj) {
-  // your code goes here
+   // if item is an array
+       // use recursion to "stringify" the array
+       // return that stringified array;
+   // if item is an object
+           // use recursion to "stringify" the object
+           // return that stringified object;
 };
