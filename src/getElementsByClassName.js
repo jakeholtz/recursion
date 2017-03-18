@@ -4,17 +4,22 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className, section) {
+var getElementsByClassName = function(className) {
   var output = [];
-  var $body = section || document.body;
-  var $childs = $body.childNodes;
+  var $body = document.body;
+  var addOut = function(addition) {
+    output.push(addition);
+  }
   function findClassesWithin(item) {
+    if (_.contains(item.classList, className)) {
+      output.push(item);
+    }
+    if (item !== null) {
       _.each(item.childNodes, function(child) {
-        if (_.contains(child.classList, className)) {
-          output.push(child);
-        }
+        findClassesWithin(child);
       });
     }
+  }
   findClassesWithin($body);
   return output
 }
