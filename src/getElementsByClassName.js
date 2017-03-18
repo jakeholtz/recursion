@@ -6,16 +6,15 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className, section) {
   var output = [];
-  var $section = section || document.body;
-  var $childs = $section.childNodes;
-  var addOut = function(addition) {
-    output = output.concat(addition);
-  }
-
-  _.each($childs, function(childItem) {
-    if (childItem.classList !== undefined && childItem.classList[0] === className) {
-      addOut(childItem);
+  var $body = section || document.body;
+  var $childs = $body.childNodes;
+  function findClassesWithin(item) {
+      _.each(item.childNodes, function(child) {
+        if (_.contains(child.classList, className)) {
+          output.push(child);
+        }
+      });
     }
-  });
+  findClassesWithin($body);
   return output
 }
