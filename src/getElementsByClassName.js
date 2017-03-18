@@ -12,10 +12,10 @@ var getElementsByClassName = function(className, section) {
     output = output.concat(addition);
   }
 
-  for (var i = 0; i < $childs.length; i++) {
-    if ($childs[i].classList !== undefined && $childs[i].classList[0] === className) {
-      addOut($childs[i]);
+  _.each($childs, function(childItem) {
+    if (childItem.classList !== undefined && childItem.classList[0] === className) {
+      addOut(childItem);
     }
-  }
+  });
   return output
 }
